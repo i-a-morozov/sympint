@@ -26,6 +26,9 @@ include = ["sympint"]
 [tool.setuptools.dynamic]
 version = {attr = "sympint.__version__"}
 
+[project.optional-dependencies]
+docs = ["pandoc", "sphinx-rtd-theme", "ipykernel", "nbsphinx"]
+
 [tool.pylint.'MESSAGES CONTROL']
 disable=[
     "raw-checker-failed",
