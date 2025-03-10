@@ -1,0 +1,22 @@
+Welcome to sympint's documentation!
+===================================
+
+JAX composable symplectic integrators.
+
+.. toctree::
+   :caption: Examples:
+   :maxdepth: 1
+
+
+.. toctree::
+   :caption: API:
+   :maxdepth: 1
+
+   modules/functional.rst
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
