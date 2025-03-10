@@ -1,0 +1,2 @@
+.. automodule:: sympint.functional
+    :members:
