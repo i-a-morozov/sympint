@@ -58,6 +58,7 @@ def nest_list(length: int, mapping: Callable[..., Array]) -> Callable[..., Array
         number of iterations to perform
     mapping : Callable[[Array, *Any], Array]
         state transformation mapping
+        R^n x ... -> R^n
 
     Returns
     -------
@@ -92,7 +93,7 @@ def fold(mappings: Sequence[Callable[..., Array]]) -> Callable[..., Array]:
     ----------
     mappings : Sequence[Callable[[Array, *Any], Array]]
         ordered sequence of transformation (identical signature) functions
-        R^n x ... -> R^n
+        [R^n x ... -> R^n]
 
     Returns
     -------
@@ -109,7 +110,7 @@ def fold(mappings: Sequence[Callable[..., Array]]) -> Callable[..., Array]:
     """
     idxs: Array = jax.numpy.arange(len(mappings))
     def closure(x: Array, *args: Any) -> Array:
-        def scan_body(carry: tuple[Array, tuple], idx: int) -> tuple[tuple[Array, tuple], None]:
+        def scan_body(carry: tuple[Array, tuple], idx: Array) -> tuple[tuple[Array, tuple], None]:
             x, args = carry
             x = jax.lax.switch(idx, mappings, x, *args)
             return (x, args), None
@@ -126,7 +127,7 @@ def fold_list(mappings: Sequence[Callable[..., Array]]) -> Callable[..., Array]:
     ----------
     mappings : Sequence[Callable[[Array, *Any], Array]]
         ordered sequence of transformation (identical signature) functions
-        R^n x ... -> R^n
+        [R^n x ... -> R^n]
 
     Returns
     -------
@@ -145,7 +146,7 @@ def fold_list(mappings: Sequence[Callable[..., Array]]) -> Callable[..., Array]:
     """
     idxs: Array = jax.numpy.arange(len(mappings))
     def closure(x: Array, *args: Any) -> Array:
-        def scan_body(carry: tuple[Array, tuple], idx: int) -> tuple[tuple[Array, tuple], None]:
+        def scan_body(carry: tuple[Array, tuple], idx: Array) -> tuple[tuple[Array, tuple], Array]:
             x, args = carry
             x = jax.lax.switch(idx, mappings, x, *args)
             return (x, args), x
