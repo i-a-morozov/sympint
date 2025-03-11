@@ -14,6 +14,8 @@ JAX composable symplectic integrators.
    :maxdepth: 1
 
    modules/functional.rst
+   modules/util.rst
+   modules/yoshida.rst
 
 Indices and tables
 ==================

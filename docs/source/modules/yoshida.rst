@@ -1,0 +1,2 @@
+.. automodule:: sympint.yoshida
+    :members:
