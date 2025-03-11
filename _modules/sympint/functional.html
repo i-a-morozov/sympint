@@ -83,7 +83,7 @@
 <span class="sd">----------</span>
 
 <span class="sd">Collection of factories for functional iteration</span>
-<span class="sd">Output of nest and fold function factories can be composed with regular JAX functions, e.g. vmap, jit and other</span>
+<span class="sd">Output of nest and fold function factories can be composed with regular JAX functions</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
@@ -135,7 +135,8 @@
 <a class="viewcode-back" href="../../modules/functional.html#sympint.functional.nest_list">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">nest_list</span><span class="p">(</span><span class="n">length</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">mapping</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Array</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Array</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Create a function that iteratively applies a state transformation mapping and accumulates intermediate results</span>
+<span class="sd">    Create a function that iteratively applies a state transformation mapping</span>
+<span class="sd">    And accumulates intermediate results</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -143,6 +144,7 @@
 <span class="sd">        number of iterations to perform</span>
 <span class="sd">    mapping : Callable[[Array, *Any], Array]</span>
 <span class="sd">        state transformation mapping</span>
+<span class="sd">        R^n x ... -&gt; R^n</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -150,7 +152,7 @@
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    Initial value is not included in the output, output length is equal to the number of iterations requested</span>
+<span class="sd">    Initial value is not included in the output, output length is equal to the number of iterations</span>
 <span class="sd">    Accumulate is equivalent to the following Python loop:</span>
 
 <span class="sd">    xs = []</span>
@@ -180,7 +182,7 @@
 <span class="sd">    ----------</span>
 <span class="sd">    mappings : Sequence[Callable[[Array, *Any], Array]]</span>
 <span class="sd">        ordered sequence of transformation (identical signature) functions</span>
-<span class="sd">        R^n x ... -&gt; R^n</span>
+<span class="sd">        [R^n x ... -&gt; R^n]</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -197,7 +199,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">idxs</span><span class="p">:</span> <span class="n">Array</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mappings</span><span class="p">))</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">closure</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
-        <span class="k">def</span><span class="w"> </span><span class="nf">scan_body</span><span class="p">(</span><span class="n">carry</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">],</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">scan_body</span><span class="p">(</span><span class="n">carry</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">],</span> <span class="n">idx</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
             <span class="n">x</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">carry</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">lax</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">mappings</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">args</span><span class="p">),</span> <span class="kc">None</span>
@@ -211,13 +213,14 @@
 <a class="viewcode-back" href="../../modules/functional.html#sympint.functional.fold_list">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">fold_list</span><span class="p">(</span><span class="n">mappings</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Array</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Array</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Create a function that sequentially applies mappings from a given list and accumulates intermediate results</span>
+<span class="sd">    Create a function that sequentially applies mappings from a given list</span>
+<span class="sd">    And accumulates intermediate results</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    mappings : Sequence[Callable[[Array, *Any], Array]]</span>
 <span class="sd">        ordered sequence of transformation (identical signature) functions</span>
-<span class="sd">        R^n x ... -&gt; R^n</span>
+<span class="sd">        [R^n x ... -&gt; R^n]</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -236,7 +239,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">idxs</span><span class="p">:</span> <span class="n">Array</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mappings</span><span class="p">))</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">closure</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
-        <span class="k">def</span><span class="w"> </span><span class="nf">scan_body</span><span class="p">(</span><span class="n">carry</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">],</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">scan_body</span><span class="p">(</span><span class="n">carry</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">],</span> <span class="n">idx</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">],</span> <span class="n">Array</span><span class="p">]:</span>
             <span class="n">x</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">carry</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">lax</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">mappings</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">args</span><span class="p">),</span> <span class="n">x</span>
