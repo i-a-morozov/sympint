@@ -15,5 +15,3 @@ from sympint.functional import nest
 from sympint.functional import nest_list
 from sympint.functional import fold
 from sympint.functional import fold_list
-
-

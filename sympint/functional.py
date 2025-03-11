@@ -3,7 +3,7 @@ Functional
 ----------
 
 Collection of factories for functional iteration
-Output of nest and fold function factories can be composed with regular JAX functions, e.g. vmap, jit and other
+Output of nest and fold function factories can be composed with regular JAX functions
 
 """
 from typing import Any
@@ -50,7 +50,8 @@ def nest(length: int, mapping: Callable[..., Array]) -> Callable[..., Array]:
 
 def nest_list(length: int, mapping: Callable[..., Array]) -> Callable[..., Array]:
     """
-    Create a function that iteratively applies a state transformation mapping and accumulates intermediate results
+    Create a function that iteratively applies a state transformation mapping
+    And accumulates intermediate results
 
     Parameters
     ----------
@@ -66,7 +67,7 @@ def nest_list(length: int, mapping: Callable[..., Array]) -> Callable[..., Array
 
     Note
     ----
-    Initial value is not included in the output, output length is equal to the number of iterations requested
+    Initial value is not included in the output, output length is equal to the number of iterations
     Accumulate is equivalent to the following Python loop:
 
     xs = []
@@ -121,7 +122,8 @@ def fold(mappings: Sequence[Callable[..., Array]]) -> Callable[..., Array]:
 
 def fold_list(mappings: Sequence[Callable[..., Array]]) -> Callable[..., Array]:
     """
-    Create a function that sequentially applies mappings from a given list and accumulates intermediate results
+    Create a function that sequentially applies mappings from a given list
+    And accumulates intermediate results
 
     Parameters
     ----------
