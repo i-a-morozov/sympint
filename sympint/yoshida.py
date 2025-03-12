@@ -10,10 +10,10 @@ from typing import Sequence
 from typing import Callable
 from typing import Optional
 
-from jax import Array
-
 from functools import reduce
 from itertools import groupby
+
+from jax import Array
 
 from sympint.util import first
 from sympint.util import last
@@ -36,7 +36,7 @@ def weights(n:int) -> list[float]:
     ----
     The resulting integration step difference order is two times the Yoshida order
     Given a time-reversible integration step w(2n)(dt) with difference order 2n
-    2(n + 1) order symmetric integration step w(2(n + 1))(dt) can be constructed using Yoshida weights for (n + 1)
+    2(n + 1) order symmetric integration step w(2(n + 1))(dt) can be constructed
     x1, x2, x1 = weights(n + 1)
     w(2(n + 1))(dt) = w(2n)(x1 dt) o w(2n)(x2 dt) o w(2n)(x1 dt)
 
@@ -67,7 +67,7 @@ def coefficients(ni:int,  nf:int) -> list[float]:
     ----
     Given a time-reversible integration step w(2(ni - 1))(dt)
     Construct coefficients x1, x2, x3, ..., x3, x2, x1, so that
-    w(2 nf)(dt) = w(2(ni - 1))(x1 dt) o w(2(ni - 1))(x2 dt) o ... o w(2(ni - 1))(x2 dt) o w(2(ni - 1))(x1 dt)
+    w(2 nf)(dt) = w(2(ni - 1))(x1 dt) o ... o w(2(ni - 1))(x1 dt)
 
     """
     ws = map(weights, range(ni if ni != 0 else 1, nf + 1))
@@ -106,9 +106,10 @@ def table(k:int, ni:int, nf:int, merge:bool=False) -> tuple[list[int], list[floa
     cs = coefficients(ni, nf)
     ps = sum(([[n, v*c] for (n, v) in zip(ns, vs)] for c in cs), start = [])
     if merge:
-        gs = groupby(ps, key=lambda x: first(x))
+        gs = groupby(ps, key=first)
         ps = [reduce(lambda x, y: [first(x), last(x) + last(y)], g) for _, g in gs]
-    return tuple(*map(list, zip(*ps)))
+    return tuple([*map(list, zip(*ps))])
+
 
 def sequence(ni:int,
              nf:int,
@@ -148,4 +149,7 @@ def sequence(ni:int,
         def function(x, dt, *args):
             return mapping(x, weight*dt, *args, *parameter)
         return function
-    return [wrapper(mappings[index], weight, parameter) for (index, weight, parameter) in zip(indices, weights, parameters)]
+    return [
+        wrapper(mappings[index], weight, parameter)
+        for index, weight, parameter in zip(indices, weights, parameters)
+    ]

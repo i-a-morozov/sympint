@@ -8,10 +8,19 @@ __all__ = [
     'nest',
     'nest_list',
     'fold',
-    'fold_list'
+    'fold_list',
+    'weights',
+    'coefficients',
+    'table',
+    'sequence'
 ]
 
 from sympint.functional import nest
 from sympint.functional import nest_list
 from sympint.functional import fold
 from sympint.functional import fold_list
+
+from sympint.yoshida import weights
+from sympint.yoshida import coefficients
+from sympint.yoshida import table
+from sympint.yoshida import sequence
