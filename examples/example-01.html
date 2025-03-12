@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example-02: Yosida composition &mdash; sympint  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Functional" href="../modules/functional.html" />
+    <link rel="prev" title="Example-01: Functional iteration" href="example-00.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            sympint
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="example-00.html">Example-01: Functional iteration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example-02: Yosida composition</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/functional.html#sympint.functional.fold"><code class="docutils literal notranslate"><span class="pre">fold()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/functional.html#sympint.functional.fold_list"><code class="docutils literal notranslate"><span class="pre">fold_list()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/functional.html#sympint.functional.nest"><code class="docutils literal notranslate"><span class="pre">nest()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/functional.html#sympint.functional.nest_list"><code class="docutils literal notranslate"><span class="pre">nest_list()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/util.html#sympint.util.first"><code class="docutils literal notranslate"><span class="pre">first()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/util.html#sympint.util.last"><code class="docutils literal notranslate"><span class="pre">last()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/yoshida.html">Yoshida</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/yoshida.html#sympint.yoshida.coefficients"><code class="docutils literal notranslate"><span class="pre">coefficients()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/yoshida.html#sympint.yoshida.sequence"><code class="docutils literal notranslate"><span class="pre">sequence()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/yoshida.html#sympint.yoshida.table"><code class="docutils literal notranslate"><span class="pre">table()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/yoshida.html#sympint.yoshida.weights"><code class="docutils literal notranslate"><span class="pre">weights()</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sympint</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example-02: Yosida composition</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/example-01.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Example-02:-Yosida-composition">
+<h1>Example-02: Yosida composition<a class="headerlink" href="#Example-02:-Yosida-composition" title="Link to this heading"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given a time-reversible integration step of difference order 2n</span>
+<span class="c1"># Yoshida composition procedure can be used to construct integration step of difference order 2(n+1)</span>
+<span class="c1"># Using Yoshida coefficients, new intergration step is w(2(n+1))(dt) = w(2n)(x1 dt) o w(2n)(x2 dt) o w(2n)(x1 dt)</span>
+
+<span class="c1"># If a hamiltonian vector field can be splitted into several sovable parts</span>
+<span class="c1"># Second order time-reversible symmetric integrator can be easily constructed as follows</span>
+<span class="c1"># w1(dt/2) o w2(dt/2) o ... o wn(dt/2) o wn(dt/2) o ... o w2(dt/2) o w1(dt/2)</span>
+<span class="c1"># where each wi is a mapping for corresponding hamiltonian</span>
+<span class="c1"># Yoshida composition procedure can be then applied repeatedly to obtain higher order integration steps</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+
+<span class="c1"># Function iterations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">fold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">nest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">nest_list</span>
+
+<span class="c1"># Yoshida composition</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">weights</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">coefficients</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">table</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">sequence</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set data type</span>
+
+<span class="n">jax</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;jax_enable_x64&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set device</span>
+
+<span class="n">device</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">devices</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+<span class="n">jax</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;jax_default_device&#39;</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given integration step of difference order 2n</span>
+<span class="c1"># Yoshida weights for 2(n+1) order can be computed using weights function</span>
+<span class="c1"># Note, sum of weights is equal to one</span>
+
+<span class="nb">print</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">weight</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">(</span><span class="mi">1</span><span class="p">)])</span> <span class="c1"># 2 -&gt; 4</span>
+<span class="nb">print</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">weight</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">(</span><span class="mi">2</span><span class="p">)])</span> <span class="c1"># 4 -&gt; 6</span>
+<span class="nb">print</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">weight</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">(</span><span class="mi">3</span><span class="p">)])</span> <span class="c1"># 6 -&gt; 8</span>
+<span class="nb">print</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">weight</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">(</span><span class="mi">4</span><span class="p">)])</span> <span class="c1"># 8 -&gt; 10</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;1.351&#39;, &#39;-1.702&#39;, &#39;1.351&#39;]
+[&#39;1.175&#39;, &#39;-1.349&#39;, &#39;1.175&#39;]
+[&#39;1.116&#39;, &#39;-1.232&#39;, &#39;1.116&#39;]
+[&#39;1.087&#39;, &#39;-1.174&#39;, &#39;1.087&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given integration step of difference order 2n</span>
+<span class="c1"># Yoshida coefficents for 2m difference order step can be computed using coefficients function</span>
+<span class="c1"># Note, sum of coefficients is equal to one</span>
+
+<span class="nb">print</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">coefficient</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">coefficient</span> <span class="ow">in</span> <span class="n">coefficients</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span> <span class="c1"># 2 -&gt; 4</span>
+<span class="nb">print</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">coefficient</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">coefficient</span> <span class="ow">in</span> <span class="n">coefficients</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span> <span class="c1"># 2 -&gt; 6</span>
+<span class="nb">print</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">coefficient</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">coefficient</span> <span class="ow">in</span> <span class="n">coefficients</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span> <span class="c1"># 4 -&gt; 6</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;1.351&#39;, &#39;-1.702&#39;, &#39;1.351&#39;]
+[&#39;1.587&#39;, &#39;-2.000&#39;, &#39;1.587&#39;, &#39;-1.823&#39;, &#39;2.297&#39;, &#39;-1.823&#39;, &#39;1.587&#39;, &#39;-2.000&#39;, &#39;1.587&#39;]
+[&#39;1.175&#39;, &#39;-1.349&#39;, &#39;1.175&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given a collection of mappings along with initial and final Yoshida orders (half the corresponding difference orders)</span>
+<span class="c1"># Corresponding Yoshida table can be computed using table function</span>
+<span class="c1"># Note, mapping can be an integation step</span>
+
+<span class="c1"># If mapping is an integration step, the last argument should be set to False</span>
+
+<span class="n">ns</span><span class="p">,</span> <span class="n">cs</span> <span class="o">=</span> <span class="n">table</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="p">;</span> <span class="nb">print</span><span class="p">([</span><span class="n">ns</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cs</span><span class="p">]])</span> <span class="c1"># 2 -&gt; 4</span>
+<span class="n">ns</span><span class="p">,</span> <span class="n">cs</span> <span class="o">=</span> <span class="n">table</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="p">;</span> <span class="nb">print</span><span class="p">([</span><span class="n">ns</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cs</span><span class="p">]])</span> <span class="c1"># 2 -&gt; 6</span>
+<span class="n">ns</span><span class="p">,</span> <span class="n">cs</span> <span class="o">=</span> <span class="n">table</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="p">;</span> <span class="nb">print</span><span class="p">([</span><span class="n">ns</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cs</span><span class="p">]])</span> <span class="c1"># 4 -&gt; 6</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Constuct table from two mappings without merging</span>
+<span class="c1"># Note, number of mappings can be arbitrary</span>
+
+<span class="n">ns</span><span class="p">,</span> <span class="n">cs</span> <span class="o">=</span> <span class="n">table</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>  <span class="p">;</span> <span class="nb">print</span><span class="p">([</span><span class="n">ns</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cs</span><span class="p">]])</span> <span class="c1"># 2 -&gt; 2</span>
+<span class="n">ns</span><span class="p">,</span> <span class="n">cs</span> <span class="o">=</span> <span class="n">table</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>  <span class="p">;</span> <span class="nb">print</span><span class="p">([</span><span class="n">ns</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cs</span><span class="p">]])</span> <span class="c1"># 2 -&gt; 4</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Constuct table from two mappings with merging</span>
+
+<span class="n">ns</span><span class="p">,</span> <span class="n">cs</span> <span class="o">=</span> <span class="n">table</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="p">;</span> <span class="nb">print</span><span class="p">([</span><span class="n">ns</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cs</span><span class="p">]])</span> <span class="c1"># 2 -&gt; 2</span>
+<span class="n">ns</span><span class="p">,</span> <span class="n">cs</span> <span class="o">=</span> <span class="n">table</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="p">;</span> <span class="nb">print</span><span class="p">([</span><span class="n">ns</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cs</span><span class="p">]])</span> <span class="c1"># 2 -&gt; 4</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[0, 0, 0], [&#39;1.351&#39;, &#39;-1.702&#39;, &#39;1.351&#39;]]
+[[0, 0, 0, 0, 0, 0, 0, 0, 0], [&#39;1.587&#39;, &#39;-2.000&#39;, &#39;1.587&#39;, &#39;-1.823&#39;, &#39;2.297&#39;, &#39;-1.823&#39;, &#39;1.587&#39;, &#39;-2.000&#39;, &#39;1.587&#39;]]
+[[0, 0, 0], [&#39;1.175&#39;, &#39;-1.349&#39;, &#39;1.175&#39;]]
+
+[[0, 1, 0], [&#39;0.500&#39;, &#39;1.000&#39;, &#39;0.500&#39;]]
+[[0, 1, 0, 0, 1, 0, 0, 1, 0], [&#39;0.676&#39;, &#39;1.351&#39;, &#39;0.676&#39;, &#39;-0.851&#39;, &#39;-1.702&#39;, &#39;-0.851&#39;, &#39;0.676&#39;, &#39;1.351&#39;, &#39;0.676&#39;]]
+
+[[0, 1, 0], [&#39;0.500&#39;, &#39;1.000&#39;, &#39;0.500&#39;]]
+[[0, 1, 0, 1, 0, 1, 0], [&#39;0.676&#39;, &#39;1.351&#39;, &#39;-0.176&#39;, &#39;-1.702&#39;, &#39;-0.176&#39;, &#39;1.351&#39;, &#39;0.676&#39;]]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct integratinn step for a simple rotation Hamiltonian</span>
+
+<span class="c1"># H = H1 + H2</span>
+<span class="c1"># H1 = 1/2 q**2 -&gt; [q, p] -&gt; [q, p - t*q]</span>
+<span class="c1"># H2 = 1/2 p**2 -&gt; [q, p] -&gt; [q + t*q, p]</span>
+
+<span class="c1"># Set mappings</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">-</span> <span class="n">dt</span><span class="o">*</span><span class="n">q</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span>
+
+<span class="c1"># Set time step</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="c1"># Set initial condition</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+
+<span class="c1"># Generate and fold transformations (without mergin) for different final Yoshida orders</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">fns</span> <span class="o">=</span> <span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">gn</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">fns</span><span class="p">)</span><span class="si">:</span><span class="s1">&gt;3</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">fold</span><span class="p">(</span><span class="n">fns</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Generate and fold transformations (with mergin) for different final Yoshida orders</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">fns</span> <span class="o">=</span> <span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">gn</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">fns</span><span class="p">)</span><span class="si">:</span><span class="s1">&gt;3</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">fold</span><span class="p">(</span><span class="n">fns</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+  3 [0.121875   0.07226562]
+  9 [0.12162308 0.07215494]
+ 27 [0.12163202 0.07215096]
+ 81 [0.12163163 0.07215085]
+243 [0.12163164 0.07215085]
+
+  3 [0.121875   0.07226562]
+  7 [0.12162308 0.07215494]
+ 19 [0.12163202 0.07215096]
+ 55 [0.12163163 0.07215085]
+163 [0.12163164 0.07215085]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span>
+
+<span class="c1"># Even with merging scanning throught a large number of mappings is slow</span>
+<span class="c1"># Note, fold is a wrapper around jax.lax.scan</span>
+
+<span class="n">fold</span><span class="p">(</span><span class="n">fns</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1.25 s ± 69.6 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This can be remedied by JAX jit compilation</span>
+<span class="c1"># The first execution will be still slow (compilation step)</span>
+
+<span class="n">fj</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">fold</span><span class="p">(</span><span class="n">fns</span><span class="p">))</span>
+<span class="n">fj</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Array([0.12163164, 0.07215085], dtype=float64)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span>
+
+<span class="c1"># Compiled transformation is expected to be much faster</span>
+<span class="c1"># If the intend is to use it repeatedly with different initials, jit compilation is a way to go</span>
+
+<span class="n">fj</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+28.1 µs ± 256 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span>
+
+<span class="c1"># Compiled step is compatible with JAX functions</span>
+<span class="c1"># For example, it is possible to compute jacobian with respect to initial condition</span>
+<span class="c1"># Note, this might trigger a recompile</span>
+
+<span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">fj</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1.86 ms ± 532 µs per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add one more layer of JIT and compile</span>
+
+<span class="n">jacobian</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">fj</span><span class="p">))</span>
+<span class="n">jacobian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Array([[ 0.96891242,  0.24740395],
+       [-0.24740396,  0.96891242]], dtype=float64)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span>
+
+<span class="c1"># Time the resulting jacobian</span>
+
+<span class="n">jacobian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+81.5 µs ± 2.27 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span>
+
+<span class="c1"># Perform several integrations steps (native Python loop over steps and step parts)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">gn</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">64</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fs</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4.68 s ± 109 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">gn</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fj</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">fold</span><span class="p">(</span><span class="n">fs</span><span class="p">))</span>
+<span class="n">fj</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span> <span class="p">;</span>
+
+<span class="n">fj</span> <span class="o">=</span> <span class="n">nest</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">fj</span><span class="p">)</span>
+<span class="n">fj</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">fj</span><span class="p">)</span>
+<span class="n">fj</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span> <span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span>
+
+<span class="c1"># Test (compilation time is excluded)</span>
+
+<span class="n">fj</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.97 ms ± 51.8 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup a multistep integrator</span>
+
+<span class="c1"># H = H1 + H2</span>
+<span class="c1"># H1 = 1/2 q**2 + 1/3 q**3 -&gt; [q, p] -&gt; [q, p - t*q - t*q**2]</span>
+<span class="c1"># H2 = 1/2 p**2            -&gt; [q, p] -&gt; [q + t*q, p]</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">-</span> <span class="n">t</span><span class="o">*</span><span class="n">q</span> <span class="o">-</span> <span class="n">t</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span> <span class="o">+</span> <span class="n">t</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">gn</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fold</span><span class="p">(</span><span class="n">fs</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">))</span>
+
+<span class="c1"># H = H1 + H2 + H3</span>
+<span class="c1"># H1 = 1/2 q**2 -&gt; [q, p] -&gt; [q, p - t*q]</span>
+<span class="c1"># H2 = 1/3 q**3 -&gt; [q, p] -&gt; [q, p - t*q**2]</span>
+<span class="c1"># H3 = 1/2 p**2 -&gt; [q, p] -&gt; [q + t*q, p]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">-</span> <span class="n">t</span><span class="o">*</span><span class="n">q</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">-</span> <span class="n">t</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span> <span class="o">+</span> <span class="n">t</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span>
+
+<span class="c1"># Note, the last mapping in the list has the smallest number of evaluations</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">gn</span><span class="p">,</span> <span class="n">hn</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fold</span><span class="p">(</span><span class="n">fs</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">))</span>
+
+<span class="c1"># Note, the result is identical since two parts commute</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.10943036 0.08841961]
+[0.10943036 0.08841961]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Increase order of an existing intergration step</span>
+
+<span class="c1"># Set time step and initial condition</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+
+<span class="c1"># Set transformations for sovable parts</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">-</span> <span class="n">t</span><span class="o">*</span><span class="n">q</span> <span class="o">-</span> <span class="n">t</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span> <span class="o">+</span> <span class="n">t</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span>
+
+<span class="c1"># Define 2nd, 4th and 6th order integration step from parts</span>
+
+<span class="n">s2</span> <span class="o">=</span> <span class="n">fold</span><span class="p">(</span><span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">gn</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">s4</span> <span class="o">=</span> <span class="n">fold</span><span class="p">(</span><span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">gn</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">s6</span> <span class="o">=</span> <span class="n">fold</span><span class="p">(</span><span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">gn</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="c1"># Constuct 4th order integration step from a 2nd order one</span>
+<span class="c1"># And compare with 4th order step constructed from parts</span>
+
+<span class="n">w4</span> <span class="o">=</span> <span class="n">fold</span><span class="p">(</span><span class="n">sequence</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">s2</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">s4</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">),</span> <span class="n">w4</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)))</span>
+
+<span class="c1"># Construct 6th order from 4th order and compare</span>
+
+<span class="n">w6</span> <span class="o">=</span> <span class="n">fold</span><span class="p">(</span><span class="n">sequence</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">s4</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">s6</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">),</span> <span class="n">w6</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)))</span>
+
+
+<span class="c1"># Construct 6th order from 2nd order and compare</span>
+
+<span class="n">w6</span> <span class="o">=</span> <span class="n">fold</span><span class="p">(</span><span class="n">sequence</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">s2</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">s6</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">),</span> <span class="n">w6</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+True
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pass fixed parameters</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">-</span> <span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">q</span> <span class="o">-</span> <span class="n">b</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span> <span class="o">+</span> <span class="n">t</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">fj</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">fold</span><span class="p">(</span><span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">gn</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="p">[]])))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fj</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.10943036 0.08841961]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Integration step with parameters (matching signatures)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">-</span> <span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">q</span> <span class="o">-</span> <span class="n">b</span><span class="o">*</span><span class="n">t</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">q</span> <span class="o">+</span> <span class="n">t</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">])</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">fj</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">fold</span><span class="p">(</span><span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">gn</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fj</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.10943036 0.08841961]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matched signatures allow to compute derivatives with respect to matched parameters</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">fj</span><span class="p">,</span> <span class="n">i</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 0.99397345  0.09979712]
+ [-0.12071788  0.99394275]]
+
+[ 0.08841321 -0.12140165]
+
+[-0.0005159 -0.0104603]
+
+[-5.32985126e-05 -1.09712073e-03]
+
+</pre></div></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="example-00.html" class="btn btn-neutral float-left" title="Example-01: Functional iteration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../modules/functional.html" class="btn btn-neutral float-right" title="Functional" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Ivan Morozov.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

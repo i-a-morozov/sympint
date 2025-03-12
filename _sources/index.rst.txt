@@ -8,6 +8,7 @@ JAX composable symplectic integrators.
    :maxdepth: 1
 
    examples/example-00.ipynb
+   examples/example-01.ipynb
 
 .. toctree::
    :caption: API:
