@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example-05: Demo &mdash; sympint  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Functional" href="../modules/functional.html" />
+    <link rel="prev" title="Example-04: Tao integrator" href="example-03.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            sympint
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="example-00.html">Example-01: Functional iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example-01.html">Example-02: Yosida composition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example-02.html">Example-03: Implicit midpoint integrator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example-03.html">Example-04: Tao integrator</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example-05: Demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/functional.html#sympint.functional.fold"><code class="docutils literal notranslate"><span class="pre">fold()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/functional.html#sympint.functional.fold_list"><code class="docutils literal notranslate"><span class="pre">fold_list()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/functional.html#sympint.functional.nest"><code class="docutils literal notranslate"><span class="pre">nest()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/functional.html#sympint.functional.nest_list"><code class="docutils literal notranslate"><span class="pre">nest_list()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/util.html#sympint.util.first"><code class="docutils literal notranslate"><span class="pre">first()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/util.html#sympint.util.last"><code class="docutils literal notranslate"><span class="pre">last()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/yoshida.html">Yoshida</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/yoshida.html#sympint.yoshida.coefficients"><code class="docutils literal notranslate"><span class="pre">coefficients()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/yoshida.html#sympint.yoshida.sequence"><code class="docutils literal notranslate"><span class="pre">sequence()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/yoshida.html#sympint.yoshida.table"><code class="docutils literal notranslate"><span class="pre">table()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/yoshida.html#sympint.yoshida.weights"><code class="docutils literal notranslate"><span class="pre">weights()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/integrators.html">Integrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/integrators.html#sympint.integrators.midpoint"><code class="docutils literal notranslate"><span class="pre">midpoint()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/integrators.html#sympint.integrators.tao"><code class="docutils literal notranslate"><span class="pre">tao()</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sympint</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example-05: Demo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/examples/example-04.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Example-05:-Demo">
+<h1>Example-05: Demo<a class="headerlink" href="#Example-05:-Demo" title="Link to this heading"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In this demo construction of symplectic integrators is illustated for basic accelerator elements</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+
+<span class="c1"># Exact solutions</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">model.library.transformations</span><span class="w"> </span><span class="kn">import</span> <span class="n">drift</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">model.library.transformations</span><span class="w"> </span><span class="kn">import</span> <span class="n">quadrupole</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">model.library.transformations</span><span class="w"> </span><span class="kn">import</span> <span class="n">bend</span>
+
+<span class="c1"># Function iterations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">nest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">fold</span>
+
+<span class="c1"># Integrators and composer</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">midpoint</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">tao</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set data type</span>
+
+<span class="n">jax</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;jax_enable_x64&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set device</span>
+
+<span class="n">device</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">devices</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+<span class="n">jax</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;jax_default_device&#39;</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define Hamiltonial functions for accelerator elements</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">h_drif</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">qx</span><span class="p">,</span> <span class="n">qy</span> <span class="o">=</span> <span class="n">qs</span>
+    <span class="n">px</span><span class="p">,</span> <span class="n">py</span> <span class="o">=</span> <span class="n">ps</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">px</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">py</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">dp</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">h_quad</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">qx</span><span class="p">,</span> <span class="n">qy</span> <span class="o">=</span> <span class="n">qs</span>
+    <span class="n">px</span><span class="p">,</span> <span class="n">py</span> <span class="o">=</span> <span class="n">ps</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">px</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">py</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">dp</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">kn</span><span class="o">*</span><span class="p">(</span><span class="n">qx</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">qy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">ks</span><span class="o">*</span><span class="n">qx</span><span class="o">*</span><span class="n">qy</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">qx</span><span class="p">,</span> <span class="n">qy</span> <span class="o">=</span> <span class="n">qs</span>
+    <span class="n">px</span><span class="p">,</span> <span class="n">py</span> <span class="o">=</span> <span class="n">ps</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">px</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">py</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">dp</span><span class="p">)</span> <span class="o">-</span> <span class="n">qx</span><span class="o">*</span><span class="n">dp</span><span class="o">/</span><span class="n">rd</span> <span class="o">+</span> <span class="n">qx</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">rd</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">kn</span><span class="o">*</span><span class="p">(</span><span class="n">qx</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">qy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">ks</span><span class="o">*</span><span class="n">qx</span><span class="o">*</span><span class="n">qy</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set parameters</span>
+
+<span class="n">ti</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">rd</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">25.0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">kn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">ks</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">dp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hamiltonian conservation (drif)</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">hi</span> <span class="o">=</span> <span class="n">h_drif</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">dp</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">drift</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">hf</span> <span class="o">=</span> <span class="n">h_drif</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">dp</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="n">hf</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1.0E-16</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1.0E-16</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hamiltonian conservation (quad)</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">hi</span> <span class="o">=</span> <span class="n">h_quad</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">quadrupole</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">hf</span> <span class="o">=</span> <span class="n">h_quad</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="n">hf</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1.0E-16</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1.0E-16</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hamiltonian conservation (bend)</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">hi</span> <span class="o">=</span> <span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">bend</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">hf</span> <span class="o">=</span> <span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">hi</span><span class="p">,</span> <span class="n">hf</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1.0E-16</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1.0E-16</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To illustrate (multi-map) split and (Yoshida) composition explicit symplectic integrator consider the following split</span>
+<span class="c1"># h = h1 + h2 = 1/2*(px**2 + py**2)/(1 + dp) - qx*dp/rd + qx**2/(2*rd**2) + 1/2*kn*(qx**2 - qy**2) - ks*qx*qy</span>
+<span class="c1"># h1 = 1/2*(px**2 + py**2)/(1 + dp)</span>
+<span class="c1"># qx = qx + dt*px/(1 + dp)</span>
+<span class="c1"># px = px</span>
+<span class="c1"># qy = qy + dt*py/(1 + dp)</span>
+<span class="c1"># py = py</span>
+<span class="c1"># h2 = - qx*dp/rd + qx**2/(2*rd**2) + 1/2*kn*(qx**2 - qy**2) - ks*qx*qy</span>
+<span class="c1"># qx = qx</span>
+<span class="c1"># px = px + dt*(dp/rd - qx/rd**2 - kn*qx + ks*qy)</span>
+<span class="c1"># qy = qy</span>
+<span class="c1"># py = py + dt*(kn*qy + ks*qx)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fa</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">):</span>
+    <span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">py</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="n">px</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">dp</span><span class="p">),</span> <span class="n">qy</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="n">py</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">dp</span><span class="p">),</span> <span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fb</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">):</span>
+    <span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">py</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">px</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="p">(</span><span class="n">dp</span><span class="o">/</span><span class="n">rd</span> <span class="o">-</span> <span class="n">qx</span><span class="o">/</span><span class="n">rd</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">kn</span><span class="o">*</span><span class="n">qx</span> <span class="o">+</span> <span class="n">ks</span><span class="o">*</span><span class="n">qy</span><span class="p">),</span> <span class="n">py</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="p">(</span><span class="n">kn</span><span class="o">*</span><span class="n">qy</span> <span class="o">+</span> <span class="n">ks</span><span class="o">*</span><span class="n">qx</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Yoshida (bend)</span>
+
+<span class="c1"># Generate integration step</span>
+
+<span class="n">step</span> <span class="o">=</span> <span class="n">fold</span><span class="p">(</span><span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">fa</span><span class="p">,</span> <span class="n">fb</span><span class="p">],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="c1"># Evaluate integration step</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">qsps</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">qs</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">qsps</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+
+<span class="n">qsps</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">qsps</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+<span class="n">qs</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">qsps</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Evaluate exact solution</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">QsPs</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">qs</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">QsPs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">bend</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">QsPs</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">qs</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">QsPs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Compare</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">qsps</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">QsPs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">qsps</span> <span class="o">-</span> <span class="n">QsPs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+8.030437562437563e-05
+8.030437539389926e-05
+
+8.030437562437563e-05
+8.03043756243756e-05
+
+[ 0.00999747 -0.0049949  -0.00105058 -0.0003978 ]
+[ 0.00999746 -0.00499491 -0.00105066 -0.00039784]
+9.384719084898185e-08
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Midpoint (bend)</span>
+
+<span class="c1"># Generate integration step</span>
+
+<span class="n">step</span> <span class="o">=</span> <span class="n">fold</span><span class="p">(</span><span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">midpoint</span><span class="p">(</span><span class="n">h_bend</span><span class="p">,</span> <span class="n">ns</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="c1"># Evaluate integration step</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">qsps</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">qs</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">qsps</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+
+<span class="n">qsps</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">qsps</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+<span class="n">qs</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">qsps</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Evaluate exact solution</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">QsPs</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">qs</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">QsPs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">bend</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">QsPs</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">qs</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">QsPs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Compare</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">qsps</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">QsPs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">qsps</span> <span class="o">-</span> <span class="n">QsPs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+8.030437562437563e-05
+8.030437562437561e-05
+
+8.030437562437563e-05
+8.03043756243756e-05
+
+[ 0.00999747 -0.0049949  -0.00105061 -0.00039781]
+[ 0.00999746 -0.00499491 -0.00105066 -0.00039784]
+5.8710763609389174e-08
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tao (bend)</span>
+
+<span class="c1"># Generate integration step</span>
+
+<span class="n">step</span> <span class="o">=</span> <span class="n">fold</span><span class="p">(</span><span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">tao</span><span class="p">(</span><span class="n">h_bend</span><span class="p">,</span> <span class="n">binding</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)],</span> <span class="n">merge</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="c1"># Evaluate integration step</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">qsps</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">qs</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">qsps</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+
+<span class="n">qsps</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">qsps</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+<span class="n">qs</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">qsps</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Evaluate exact solution</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">QsPs</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">qs</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">QsPs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+
+<span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="o">=</span> <span class="n">bend</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">rd</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">])</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+<span class="n">QsPs</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">qs</span><span class="p">,</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">QsPs</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h_bend</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">ti</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">rd</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kn</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">ks</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">dp</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Compare</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">qsps</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">QsPs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">qsps</span> <span class="o">-</span> <span class="n">QsPs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+8.030437562437563e-05
+8.030437585721544e-05
+
+8.030437562437563e-05
+8.03043756243756e-05
+
+[ 0.00999747 -0.0049949  -0.00105064 -0.00039783]
+[ 0.00999746 -0.00499491 -0.00105066 -0.00039784]
+2.50766882131807e-08
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="example-03.html" class="btn btn-neutral float-left" title="Example-04: Tao integrator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../modules/functional.html" class="btn btn-neutral float-right" title="Functional" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Ivan Morozov.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
