@@ -13,7 +13,8 @@ __all__ = [
     'coefficients',
     'table',
     'sequence',
-    'midpoint'
+    'midpoint',
+    'tao'
 ]
 
 from sympint.functional import nest
@@ -27,3 +28,4 @@ from sympint.yoshida import table
 from sympint.yoshida import sequence
 
 from sympint.integrators import midpoint
+from sympint.integrators import tao
