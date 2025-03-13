@@ -1,6 +1,6 @@
 """
-Integrator
-----------
+Integrators
+-----------
 
 Collection of symplectic (JAX composable) integrators
 

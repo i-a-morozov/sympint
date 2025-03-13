@@ -12,7 +12,8 @@ __all__ = [
     'weights',
     'coefficients',
     'table',
-    'sequence'
+    'sequence',
+    'midpoint'
 ]
 
 from sympint.functional import nest
@@ -24,3 +25,5 @@ from sympint.yoshida import weights
 from sympint.yoshida import coefficients
 from sympint.yoshida import table
 from sympint.yoshida import sequence
+
+from sympint.integrators import midpoint

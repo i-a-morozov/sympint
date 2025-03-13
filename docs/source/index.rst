@@ -17,6 +17,7 @@ JAX composable symplectic integrators.
    modules/functional.rst
    modules/util.rst
    modules/yoshida.rst
+   modules/integrators.rst
 
 Indices and tables
 ==================
