@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Example-03: Implicit midpoint integrator &mdash; sympint  documentation</title>
+  <title>Example-04: Tao integrator &mdash; sympint  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
@@ -23,8 +23,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Example-04: Tao integrator" href="example-03.html" />
-    <link rel="prev" title="Example-02: Yosida composition" href="example-01.html" /> 
+    <link rel="next" title="Functional" href="../modules/functional.html" />
+    <link rel="prev" title="Example-03: Implicit midpoint integrator" href="example-02.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,8 +50,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="example-00.html">Example-01: Functional iteration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example-01.html">Example-02: Yosida composition</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Example-03: Implicit midpoint integrator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example-03.html">Example-04: Tao integrator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example-02.html">Example-03: Implicit midpoint integrator</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example-04: Tao integrator</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
@@ -87,9 +87,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Example-03: Implicit midpoint integrator</li>
+      <li class="breadcrumb-item active">Example-04: Tao integrator</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/examples/example-02.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/examples/example-03.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -97,15 +97,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Example-03:-Implicit-midpoint-integrator">
-<h1>Example-03: Implicit midpoint integrator<a class="headerlink" href="#Example-03:-Implicit-midpoint-integrator" title="Link to this heading"></a></h1>
+  <section id="Example-04:-Tao-integrator">
+<h1>Example-04: Tao integrator<a class="headerlink" href="#Example-04:-Tao-integrator" title="Link to this heading"></a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In this example implicit midpoint integrator usage is illustrated</span>
-<span class="c1"># Integration step is constructed from a given hamiltonian h(q, p, t, *args)</span>
-<span class="c1"># The resulting integration step signature is (qp, dt, t, *args)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In this example Tao integrator usage is illustrated</span>
+<span class="c1"># Integration step is constructed from a given hamiltonian h(q, p, *args)</span>
+<span class="c1"># The resulting integration step signature is (qp, dt, *args)</span>
 <span class="c1"># Integration step can be used with Yoshida composition and is JAX composable</span>
 </pre></div>
 </div>
@@ -134,7 +134,7 @@
 
 <span class="c1"># Implicit midpoint integrator</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">midpoint</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint</span><span class="w"> </span><span class="kn">import</span> <span class="n">tao</span>
 
 <span class="c1"># Plotting</span>
 
@@ -237,23 +237,23 @@ Array([ 0.09446052, -0.06067929], dtype=float64)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-27.3 µs ± 905 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+24.2 µs ± 225 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct Yoshida composition step (implicit midpoint)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct Yoshida composition step (tao)</span>
 
 <span class="c1"># Define hamiltonian function</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">p</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="n">q</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="c1"># Define implicit step</span>
 
-<span class="n">integrator</span> <span class="o">=</span> <span class="n">midpoint</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">ns</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">tao</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">binding</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
 
 <span class="c1"># Generate Yoshida sequence</span>
 
@@ -312,7 +312,7 @@ Array([ 0.09446052, -0.06067929], dtype=float64)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-262 µs ± 3.87 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+60.9 µs ± 215 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -366,14 +366,14 @@ Array(True, dtype=bool)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/examples_example-02_10_0.png" src="../_images/examples_example-02_10_0.png" />
+<img alt="../_images/examples_example-03_10_0.png" src="../_images/examples_example-03_10_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Implicit step is differentiable with respect to initial condition and parameters</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tao step is differentiable with respect to initial condition and parameters</span>
 
 <span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">integrator</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 </pre></div>
@@ -412,8 +412,8 @@ Array([[ 0.99994002,  0.0099998 ],
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 5.64 s, sys: 9.39 ms, total: 5.65 s
-Wall time: 5.55 s
+CPU times: user 1.25 s, sys: 5.99 ms, total: 1.26 s
+Wall time: 1.15 s
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -440,8 +440,8 @@ Wall time: 5.55 s
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.08 ms, sys: 11 µs, total: 1.09 ms
-Wall time: 933 µs
+CPU times: user 76.4 ms, sys: 1.85 ms, total: 78.3 ms
+Wall time: 77.1 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -489,8 +489,8 @@ Wall time: 933 µs
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 1.36 ms, sys: 0 ns, total: 1.36 ms
-Wall time: 317 µs
+CPU times: user 77.8 ms, sys: 871 µs, total: 78.7 ms
+Wall time: 77.7 ms
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -508,8 +508,8 @@ Wall time: 317 µs
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="example-01.html" class="btn btn-neutral float-left" title="Example-02: Yosida composition" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="example-03.html" class="btn btn-neutral float-right" title="Example-04: Tao integrator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="example-02.html" class="btn btn-neutral float-left" title="Example-03: Implicit midpoint integrator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../modules/functional.html" class="btn btn-neutral float-right" title="Functional" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
