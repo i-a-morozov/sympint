@@ -65,6 +65,7 @@
 <li class="toctree-l1"><a class="reference internal" href="yoshida.html#sympint.yoshida.weights"><code class="docutils literal notranslate"><span class="pre">weights()</span></code></a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Integrators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#sympint.integrators.midpoint"><code class="docutils literal notranslate"><span class="pre">midpoint()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#sympint.integrators.tao"><code class="docutils literal notranslate"><span class="pre">tao()</span></code></a></li>
 </ul>
 
         </div>
@@ -108,6 +109,26 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>integrator(qp, dt, t, <a href="#id5"><span class="problematic" id="id6">*</span></a>args)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable[[Array, *Any], Array]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sympint.integrators.tao">
+<span class="sig-prename descclassname"><span class="pre">sympint.integrators.</span></span><span class="sig-name descname"><span class="pre">tao</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">jax.Array</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">jax.Array</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/sympint/integrators.html#tao"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sympint.integrators.tao" title="Link to this definition"></a></dt>
+<dd><p>Generate Tao integrator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>H</strong> (Callable[[Array, <a href="#id9"><span class="problematic" id="id10">*</span></a>Any], Array]) – Hamiltonian function H(q, p, dt, <a href="#id7"><span class="problematic" id="id8">*</span></a>args)</p></li>
+<li><p><strong>binding</strong> (<em>float</em><em>, </em><em>default=0.0</em>) – binding factor</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>integrator(qp, dt, <a href="#id11"><span class="problematic" id="id12">*</span></a>args)</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Callable[[Array, *Any], Array]</p>
