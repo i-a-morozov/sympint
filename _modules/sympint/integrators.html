@@ -1,0 +1,175 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sympint.integrators &mdash; sympint  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            sympint
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/example-00.html">Example-01: Functional iteration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/example-01.html">Example-02: Yosida composition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/example-02.html">Example-03: Implicit midpoint integrator</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/functional.html">Functional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/functional.html#sympint.functional.fold"><code class="docutils literal notranslate"><span class="pre">fold()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/functional.html#sympint.functional.fold_list"><code class="docutils literal notranslate"><span class="pre">fold_list()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/functional.html#sympint.functional.nest"><code class="docutils literal notranslate"><span class="pre">nest()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/functional.html#sympint.functional.nest_list"><code class="docutils literal notranslate"><span class="pre">nest_list()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/util.html#sympint.util.first"><code class="docutils literal notranslate"><span class="pre">first()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/util.html#sympint.util.last"><code class="docutils literal notranslate"><span class="pre">last()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/yoshida.html">Yoshida</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/yoshida.html#sympint.yoshida.coefficients"><code class="docutils literal notranslate"><span class="pre">coefficients()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/yoshida.html#sympint.yoshida.sequence"><code class="docutils literal notranslate"><span class="pre">sequence()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/yoshida.html#sympint.yoshida.table"><code class="docutils literal notranslate"><span class="pre">table()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/yoshida.html#sympint.yoshida.weights"><code class="docutils literal notranslate"><span class="pre">weights()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/integrators.html">Integrators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/integrators.html#sympint.integrators.midpoint"><code class="docutils literal notranslate"><span class="pre">midpoint()</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sympint</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">sympint.integrators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for sympint.integrators</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Integrators</span>
+<span class="sd">-----------</span>
+
+<span class="sd">Collection of symplectic (JAX composable) integrators</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jax</span><span class="w"> </span><span class="kn">import</span> <span class="n">Array</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sympint.functional</span><span class="w"> </span><span class="kn">import</span> <span class="n">nest</span>
+
+<div class="viewcode-block" id="midpoint">
+<a class="viewcode-back" href="../../modules/integrators.html#sympint.integrators.midpoint">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">midpoint</span><span class="p">(</span><span class="n">H</span><span class="p">:</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Array</span><span class="p">],</span> <span class="n">ns</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Array</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate implicit midpoint integrator</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    H: Callable[[Array, *Any], Array]</span>
+<span class="sd">        Hamiltonian function H(q, p, dt, t, *args)</span>
+<span class="sd">    ns: int, default=1</span>
+<span class="sd">        number of Newton iteration steps</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Callable[[Array, *Any], Array]</span>
+<span class="sd">        integrator(qp, dt, t, *args)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dHdq</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">argnums</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">dHdp</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">argnums</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">integrator</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">dt</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+        <span class="n">q</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">t_m</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">dt</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">residual</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Array</span><span class="p">,</span> <span class="n">Array</span><span class="p">]:</span>
+            <span class="n">Q</span><span class="p">,</span> <span class="n">P</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">q_m</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">q</span> <span class="o">+</span> <span class="n">Q</span><span class="p">)</span>
+            <span class="n">p_m</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">P</span><span class="p">)</span>
+            <span class="n">dq</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">-</span> <span class="n">q</span> <span class="o">-</span> <span class="n">dt</span><span class="o">*</span><span class="n">dHdp</span><span class="p">(</span><span class="n">q_m</span><span class="p">,</span> <span class="n">p_m</span><span class="p">,</span> <span class="n">t_m</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+            <span class="n">dp</span> <span class="o">=</span> <span class="n">P</span> <span class="o">-</span> <span class="n">p</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="n">dHdq</span><span class="p">(</span><span class="n">q_m</span><span class="p">,</span> <span class="n">p_m</span><span class="p">,</span> <span class="n">t_m</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">dq</span><span class="p">,</span> <span class="n">dp</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">state</span><span class="p">,</span> <span class="n">state</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">newton</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+            <span class="n">jacobian</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">residual</span><span class="p">,</span> <span class="n">has_aux</span><span class="o">=</span><span class="kc">True</span><span class="p">)(</span><span class="n">state</span><span class="p">)</span>
+            <span class="n">delta</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">jacobian</span><span class="p">,</span> <span class="o">-</span><span class="n">error</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">state</span> <span class="o">+</span> <span class="n">delta</span>
+        <span class="k">return</span> <span class="n">nest</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">newton</span><span class="p">)(</span><span class="n">state</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">integrator</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Ivan Morozov.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

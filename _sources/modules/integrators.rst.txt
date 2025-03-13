@@ -1,0 +1,2 @@
+.. automodule:: sympint.integrators
+    :members:

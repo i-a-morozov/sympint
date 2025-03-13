@@ -9,6 +9,7 @@ JAX composable symplectic integrators.
 
    examples/example-00.ipynb
    examples/example-01.ipynb
+   examples/example-02.ipynb
 
 .. toctree::
    :caption: API:
@@ -17,6 +18,7 @@ JAX composable symplectic integrators.
    modules/functional.rst
    modules/util.rst
    modules/yoshida.rst
+   modules/integrators.rst
 
 Indices and tables
 ==================
