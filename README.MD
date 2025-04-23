@@ -2,6 +2,8 @@
 
 JAX composable symplectic integrators
 
+[![DOI](https://zenodo.org/badge/946107787.svg)](https://doi.org/10.5281/zenodo.15265929)
+
 # Install
 
 ```
