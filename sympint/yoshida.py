@@ -142,7 +142,7 @@ def sequence(ni:int,
     Output sequence mappings have (x, dt, *args) singnatures
 
     """
-    indices, weights = table(len(mappings), ni, nf, merge)
+    indices, weights, *_ = table(len(mappings), ni, nf, merge)
     parameters = [[] for _ in range(len(mappings))] if parameters is None else parameters
     parameters = [parameters[i] for i in indices]
     def wrapper(mapping, weight, parameter):
