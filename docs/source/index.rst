@@ -13,6 +13,7 @@ JAX composable symplectic integrators.
    examples/example-03.ipynb
    examples/example-04.ipynb
    examples/example-05.ipynb
+   examples/example-06.ipynb
 
 .. toctree::
    :caption: API:
