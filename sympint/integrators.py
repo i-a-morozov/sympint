@@ -50,7 +50,7 @@ def midpoint(H:Callable[..., Array],
         def solve(matrix:Array, vector:Array) -> Array:
             return jax.numpy.linalg.solve(matrix, vector)    
     dHdq = gradient(H, argnums=0)
-    dHdp = gradient(H, argnums=1)
+    dHdp = gradient(H, argnums=1)    
     def integrator(state: Array, dt: Array, t: Array, *args: Array) -> Array:
         q, p = jax.numpy.reshape(state, (2, -1))
         t_m = t + 0.5*dt
@@ -62,8 +62,9 @@ def midpoint(H:Callable[..., Array],
             dp = P - p + dt*dHdq(q_m, p_m, t_m, *args)
             state = jax.numpy.concatenate([dq, dp])
             return state, state
+        auxiliary = jacobian(residual, has_aux=True)
         def newton(state: Array) -> Array:
-            matrix, error = jacobian(residual, has_aux=True)(state)
+            matrix, error = auxiliary(state)
             return state + solve(matrix, -error)
         return nest(ns, newton)(state)
     return integrator
