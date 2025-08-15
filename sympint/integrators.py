@@ -19,7 +19,9 @@ from sympint.yoshida import sequence
 
 def midpoint(H:Callable[..., Array],
             ns:int=1,
-            gradient:Optional[Callable[..., Array]] = None) -> Callable[..., Array]:
+            gradient:Optional[Callable[..., Array]] = None,
+            jacobian:Optional[Callable[..., Array]] = None,
+            solve:Optional[Callable[[Array, Array], Array]] = None) -> Callable[..., Array]:
     """
     Generate implicit midpoint integrator
 
@@ -31,6 +33,10 @@ def midpoint(H:Callable[..., Array],
         number of Newton iteration steps
     gradient: Optional[Callable[..., Array]], default=None
         gradient function (defaults to jax.grad)
+    jacobian: Optional[Callable]
+        jax.jacfwd or jax.jacrev (default)
+    solve: Optional[Callable]
+        linear solver(matrix, vector)
 
     Returns
     -------
@@ -39,6 +45,10 @@ def midpoint(H:Callable[..., Array],
 
     """
     gradient = grad if gradient is None else gradient
+    jacobian = jax.jacrev if jacobian is None else jacobian
+    if solve is None:
+        def solve(matrix:Array, vector:Array) -> Array:
+            return jax.numpy.linalg.solve(matrix, vector)    
     dHdq = gradient(H, argnums=0)
     dHdp = gradient(H, argnums=1)
     def integrator(state: Array, dt: Array, t: Array, *args: Array) -> Array:
@@ -53,9 +63,8 @@ def midpoint(H:Callable[..., Array],
             state = jax.numpy.concatenate([dq, dp])
             return state, state
         def newton(state: Array) -> Array:
-            jacobian, error = jax.jacrev(residual, has_aux=True)(state)
-            delta, *_ = jax.numpy.linalg.lstsq(jacobian, -error)
-            return state + delta
+            matrix, error = jacobian(residual, has_aux=True)(state)
+            return state + solve(matrix, -error)
         return nest(ns, newton)(state)
     return integrator
 
